@@ -10,6 +10,17 @@ WIDTH = 1280 # Largura da tela
 HEIGHT = 720 # Altura da tela
 FPS = 60 # Frames por segundo
 
+#Estado do jogador 
+STILL = 0
+JUMPING = 1
+FALLING = 2
+
+#Gravidade 
+GRAVITY = 5
+
+#Pulo
+JUMP_SIZE = 10
+
 # Define tamanhos
 METEOR_WIDTH = 50
 METEOR_HEIGHT = 38
