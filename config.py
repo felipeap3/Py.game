@@ -6,8 +6,8 @@ SND_DIR = path.join(path.dirname(__file__), 'assets', 'snd')
 FNT_DIR = path.join(path.dirname(__file__), 'assets', 'font')
 
 # Dados gerais do jogo.
-WIDTH = 1000 # Largura da tela
-HEIGHT = 600 # Altura da tela
+WIDTH = 1280 # Largura da tela
+HEIGHT = 720 # Altura da tela
 FPS = 60 # Frames por segundo
 
 # Define tamanhos
