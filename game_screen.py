@@ -53,20 +53,16 @@ def game_screen(window):
                 if event.type == pygame.KEYDOWN:
                     # Dependendo da tecla, altera a velocidade.
                     keys_down[event.key] = True
-                    if event.key == pygame.K_LEFT:
-                        player.speedx -= 8
-                    if event.key == pygame.K_RIGHT:
-                        player.speedx += 8
                     if event.key == pygame.K_SPACE:
-                        player.shoot()
+                        player.speedy += 10
                 # Verifica se soltou alguma tecla.
                 if event.type == pygame.KEYUP:
                     # Dependendo da tecla, altera a velocidade.
                     if event.key in keys_down and keys_down[event.key]:
                         if event.key == pygame.K_LEFT:
-                            player.speedx += 8
+                            player.speedy += 8
                         if event.key == pygame.K_RIGHT:
-                            player.speedx -= 8
+                            player.speedy -= 8
 
         # ----- Atualiza estado do jogo
         # Atualizando a posição dos meteoros
