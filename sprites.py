@@ -1,7 +1,8 @@
 import random
 import pygame
-from config import WIDTH, HEIGHT, METEOR_WIDTH, METEOR_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT
+from config import WIDTH, HEIGHT, METEOR_WIDTH, METEOR_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT, STILL, JUMPING, FALLING, GRAVITY, JUMP_SIZE 
 from assets import SHIP_IMG, PEW_SOUND, METEOR_IMG, BULLET_IMG, EXPLOSION_ANIM
+
 
 
 class Ship(pygame.sprite.Sprite):
@@ -24,10 +25,12 @@ class Ship(pygame.sprite.Sprite):
 
     def update(self):
         # Atualização da posição da nave
-        self.speedy -= 0.5
+         
+        self.speedy -= GRAVITY
+        if self.speedy > 0:
+            self.state = FALLING
 
-        # self.rect.y += self.speedy
-        self.rect.y -= self.speedy
+        self.rect.y += self.speedy
 
         # Mantem dentro da tela
         if self.rect.right > WIDTH:
@@ -35,6 +38,32 @@ class Ship(pygame.sprite.Sprite):
         if self.rect.left < 0:
             self.rect.left = 0
 
+    def jump(self):
+        # Só pode pular se ainda não estiver pulando ou caindo
+        if self.state == STILL:
+            self.speedy -= JUMP_SIZE
+            self.state = JUMPING
+
+        
+
+
+
+
+
+
+
+
+        
+
+        
+
+    
+    
+    
+    
+    
+    
+    
     def shoot(self):
         # Verifica se pode atirar
         now = pygame.time.get_ticks()
@@ -51,30 +80,30 @@ class Ship(pygame.sprite.Sprite):
             self.groups['all_bullets'].add(new_bullet)
             self.assets[PEW_SOUND].play()
 
-# class Meteor(pygame.sprite.Sprite):
-#     def __init__(self, assets):
-#         # Construtor da classe mãe (Sprite).
-#         pygame.sprite.Sprite.__init__(self)
+class Meteor(pygame.sprite.Sprite):
+    def __init__(self, assets):
+        # Construtor da classe mãe (Sprite).
+        pygame.sprite.Sprite.__init__(self)
 
-#         self.image = assets[METEOR_IMG]
-#         self.mask = pygame.mask.from_surface(self.image)
-#         self.rect = self.image.get_rect()
-#         self.rect.x = random.randint(0, WIDTH-METEOR_WIDTH)
-#         self.rect.y = random.randint(-100, -METEOR_HEIGHT)
-#         self.speedx = random.randint(-3, 3)
-#         self.speedy = random.randint(2, 9)
+        self.image = assets[METEOR_IMG]
+        self.mask = pygame.mask.from_surface(self.image)
+        self.rect = self.image.get_rect()
+        self.rect.x = random.randint(0, WIDTH-METEOR_WIDTH)
+        self.rect.y = random.randint(-100, -METEOR_HEIGHT)
+        self.speedx = random.randint(-3, 3)
+        self.speedy = random.randint(2, 9)
 
-#     def update(self):
-#         # Atualizando a posição do meteoro
-#         self.rect.x += self.speedx
-#         self.rect.y += self.speedy
-#         # Se o meteoro passar do final da tela, volta para cima e sorteia
-#         # novas posições e velocidades
-#         if self.rect.top > HEIGHT or self.rect.right < 0 or self.rect.left > WIDTH:
-#             self.rect.x = random.randint(0, WIDTH-METEOR_WIDTH)
-#             self.rect.y = random.randint(-100, -METEOR_HEIGHT)
-#             self.speedx = random.randint(-3, 3)
-#             self.speedy = random.randint(2, 9)
+    def update(self):
+        # Atualizando a posição do meteoro
+        self.rect.x += self.speedx
+        self.rect.y += self.speedy
+        # Se o meteoro passar do final da tela, volta para cima e sorteia
+        # novas posições e velocidades
+        if self.rect.top > HEIGHT or self.rect.right < 0 or self.rect.left > WIDTH:
+            self.rect.x = random.randint(0, WIDTH-METEOR_WIDTH)
+            self.rect.y = random.randint(-100, -METEOR_HEIGHT)
+            self.speedx = random.randint(-3, 3)
+            self.speedy = random.randint(2, 9)
 
 # Classe Bullet que representa os tiros
 class Bullet(pygame.sprite.Sprite):
