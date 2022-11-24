@@ -11,9 +11,8 @@ HEIGHT = 720 # Altura da tela
 FPS = 60 # Frames por segundo
 
 #Estado do jogador 
-STILL = 0
-JUMPING = 1
-FALLING = 2
+Pula = False
+FALLING = True
 
 #Gravidade 
 GRAVITY = 5
@@ -26,6 +25,10 @@ METEOR_WIDTH = 50
 METEOR_HEIGHT = 38
 SHIP_WIDTH = 50
 SHIP_HEIGHT = 38
+TILE_SIZE = 40 
+# Tamanho de cada pulo (cada tile é uma altura de pulo)
+PLAYER_WIDTH = TILE_SIZE
+PLAYER_HEIGHT = int(TILE_SIZE * 1.5)
 
 # Define algumas variáveis com as cores básicas
 WHITE = (255, 255, 255)
