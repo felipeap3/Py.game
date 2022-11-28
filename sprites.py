@@ -72,7 +72,8 @@ class Meteor(pygame.sprite.Sprite):
         # Se o meteoro passar do final da tela, volta para cima e sorteia
         # novas posições e velocidades
         if self.rect.right < 0 or self.rect.left > WIDTH:
-            self.rect.x = WIDTH
+            self.rect.centerx = WIDTH
+            self.rect.centery = HEIGHT 
             # self.speedx = random.randint(-3, 0)
             self.speedx = -4 
 
