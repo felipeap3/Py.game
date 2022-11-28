@@ -63,7 +63,7 @@ class Meteor(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.centerx = WIDTH
         self.rect.centery = HEIGHT 
-        self.speedx = random.randint(-5, -3)
+        self.speedx = -4
 
     def update(self):
         # Atualizando a posição do meteoro
@@ -74,7 +74,7 @@ class Meteor(pygame.sprite.Sprite):
         if self.rect.left < 0:
             self.rect.centerx = WIDTH
             self.rect.centery = HEIGHT 
-            self.speedx = random.randint(-5, -3)
+            self.speedx = -4
 
 # Classe Bullet que representa os tiros
 class Bullet(pygame.sprite.Sprite):
