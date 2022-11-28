@@ -53,8 +53,7 @@ def game_screen(window):
                 if event.type == pygame.KEYDOWN:
                     # Dependendo da tecla, altera a velocidade.
                     keys_down[event.key] = True
-                    if event.key == pygame.K_SPACE:
-                        # Gravity -= 1 
+                    if event.key == pygame.K_SPACE: 
                         player.speedy -= 12 
 
                 
