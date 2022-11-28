@@ -1,4 +1,5 @@
 from os import path
+import random
 
 # Estabelece a pasta que contem as figuras e sons.
 IMG_DIR = path.join(path.dirname(__file__), 'assets', 'img')
@@ -12,7 +13,7 @@ FPS = 60 # Frames por segundo
 
 # Define tamanhos
 METEOR_WIDTH = 60
-METEOR_HEIGHT = 250
+METEOR_HEIGHT = 500
 SHIP_WIDTH = 80
 SHIP_HEIGHT = 50
 
