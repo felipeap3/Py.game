@@ -13,7 +13,7 @@ FPS = 60 # Frames por segundo
 # Define tamanhos
 METEOR_WIDTH = 50
 METEOR_HEIGHT = 38
-SHIP_WIDTH = 50
+SHIP_WIDTH = 80
 SHIP_HEIGHT = 38
 
 # Define algumas variáveis com as cores básicas
