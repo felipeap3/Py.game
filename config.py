@@ -11,7 +11,7 @@ HEIGHT = 720 # Altura da tela
 FPS = 60 # Frames por segundo
 
 #Estado do jogador 
-Pula = False
+Gravity = 0.5
 FALLING = True
 
 #Gravidade 
