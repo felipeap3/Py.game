@@ -1,8 +1,7 @@
 import random
 import pygame
-from config import WIDTH, HEIGHT, METEOR_WIDTH, METEOR_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT, Pula, FALLING, GRAVITY, JUMP_SIZE, TILE_SIZE, PLAYER_WIDTH, PLAYER_HEIGHT
+from config import WIDTH, HEIGHT, METEOR_WIDTH, METEOR_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT, Gravity 
 from assets import SHIP_IMG, PEW_SOUND, METEOR_IMG, BULLET_IMG, EXPLOSION_ANIM
-
 
 class Ship(pygame.sprite.Sprite):
     def __init__(self, groups, assets):
@@ -12,8 +11,8 @@ class Ship(pygame.sprite.Sprite):
         self.image = assets[SHIP_IMG]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
-        self.rect.centerx = WIDTH / 3
-        self.rect.bottom = HEIGHT / 1.5
+        self.rect.centerx = WIDTH / 2
+        self.rect.bottom = HEIGHT - 10
         self.speedy = 0
         self.groups = groups
         self.assets = assets
@@ -24,12 +23,15 @@ class Ship(pygame.sprite.Sprite):
 
     def update(self):
         # Atualização da posição da nave
-        # self.rect.y +=  2 #self.speedy
-        if Pula == True:
-            self.rect.y -=  2 
-        self.rect.y +=  2
-
         
+        self.speedy += Gravity
+        self.rect.y += self.speedy 
+
+        # Mantem dentro da tela
+        if self.rect.right > WIDTH:
+            self.rect.right = WIDTH
+        if self.rect.left < 0:
+            self.rect.left = 0
 
     def shoot(self):
         # Verifica se pode atirar
@@ -46,7 +48,7 @@ class Ship(pygame.sprite.Sprite):
             self.groups['all_sprites'].add(new_bullet)
             self.groups['all_bullets'].add(new_bullet)
             self.assets[PEW_SOUND].play()
-    
+
 class Meteor(pygame.sprite.Sprite):
     def __init__(self, assets):
         # Construtor da classe mãe (Sprite).
