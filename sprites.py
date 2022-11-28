@@ -23,15 +23,18 @@ class Ship(pygame.sprite.Sprite):
 
     def update(self):
         # Atualização da posição da nave
-        
+        Gravity = 0.5
         self.speedy += Gravity
         self.rect.y += self.speedy 
 
         # Mantem dentro da tela
+
         if self.rect.bottom > HEIGHT:
             self.rect.bottom = HEIGHT
+            Gravity = 0 
         if self.rect.top < 0:
             self.rect.top = 0
+
 
     def shoot(self):
         # Verifica se pode atirar
