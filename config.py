@@ -14,6 +14,10 @@ FPS = 60 # Frames por segundo
 # Define tamanhos
 METEOR_WIDTH = 60
 METEOR_HEIGHT = 500
+
+METEOR_WIDTH2 = 80
+METEOR_HEIGHT2 = 400
+
 SHIP_WIDTH = 80
 SHIP_HEIGHT = 50
 

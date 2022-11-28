@@ -69,8 +69,13 @@ class Meteor(pygame.sprite.Sprite):
         # Atualizando a posição do meteoro
         self.rect.x += self.speedx
 
-        # Se o meteoro passar do final da tela, volta para cima e sorteia
-        # novas posições e velocidades
+        #cria novo obstaculo quando passa da metade da tela
+        if self.rect.left < WIDTH/2:
+            self.rect.centerx = WIDTH
+            self.rect.centery = HEIGHT 
+            self.speedx = -4
+
+        # cria novo obstaculo quando ele sai da tela
         if self.rect.left < 0:
             self.rect.centerx = WIDTH
             self.rect.centery = HEIGHT 
