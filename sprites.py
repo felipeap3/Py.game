@@ -12,7 +12,8 @@ class Ship(pygame.sprite.Sprite):
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         self.rect.centerx = WIDTH / 2
-        self.rect.bottom = HEIGHT - 10
+        self.rect.centery = HEIGHT / 2
+        # self.rect.bottom = HEIGHT - 10
         self.speedy = 0
         self.groups = groups
         self.assets = assets
@@ -23,14 +24,15 @@ class Ship(pygame.sprite.Sprite):
 
     def update(self):
         # Atualização da posição da nave
-
+        
         self.speedy += Gravity
         self.rect.y += self.speedy 
-
+        if self.speedy > 7:
+            self.speedy -= 1
         # Mantem dentro da tela
 
         if self.rect.bottom > HEIGHT:
-            self.rect.bottom = HEIGHT 
+            self.rect.bottom = HEIGHT
         if self.rect.top < 0:
             self.rect.top = 0
 
