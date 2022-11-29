@@ -99,7 +99,7 @@ class Bullet(pygame.sprite.Sprite):
         if self.rect.bottom < 0:
             self.kill()
 
-# Classe que representa uma explosão de meteoro
+# Classe que representa uma explosão de predio
 class Explosion(pygame.sprite.Sprite):
     # Construtor da classe.
     def __init__(self, center, assets):
@@ -203,7 +203,7 @@ class Predio2(pygame.sprite.Sprite):
         self.speedx = -4
        
     def update(self):
-        # Atualizando a posição do meteoro
+        # Atualizando a posição do predio
         self.rect.x += self.speedx
         # cria novo obstaculo quando ele sai da tela
         if self.rect.left < 0:
@@ -224,7 +224,7 @@ class Predio3(pygame.sprite.Sprite):
         self.speedx = -4
        
     def update(self):
-        # Atualizando a posição do meteoro
+        # Atualizando a posição do predio
         self.rect.x += self.speedx
         # cria novo obstaculo quando ele sai da tela
         if self.rect.left < 0:
@@ -245,7 +245,7 @@ class Predio4(pygame.sprite.Sprite):
         self.speedx = -4
        
     def update(self):
-        # Atualizando a posição do meteoro
+        # Atualizando a posição do predio
         self.rect.x += self.speedx
         # cria novo obstaculo quando ele sai da tela
         if self.rect.left < 0:
