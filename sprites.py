@@ -179,14 +179,14 @@ class Nuvem2(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.centerx = WIDTH
         self.rect.centery = random.randint(0, HEIGHT/2)
-        self.speedx = -6
+        self.speedx = -9
 
     def update(self):
         # Atualizando a posição da nuvem 
         self.rect.x += self.speedx
         # recoloca a nuvem que saiu no inicio da tela 
-        if Nuvem(self.image) == WIDTH / 2:
+        if self.rect.left < 0:
             self.rect.centerx = WIDTH
             self.rect.centery = random.randint(0, HEIGHT/2) 
-            self.speedx = -6
+            self.speedx = -9
             
