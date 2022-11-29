@@ -22,7 +22,7 @@ def load_assets():
     assets[BACKGROUND] = pygame.image.load(os.path.join(IMG_DIR, 'starfield.png')).convert()
     assets[METEOR_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'obstaculo_oficial.png')).convert_alpha()
     assets[METEOR_IMG] = pygame.transform.scale(assets['meteor_img'], (METEOR_WIDTH, METEOR_HEIGHT))
-    assets[METEOR_IMG2] = pygame.image.load(os.path.join(IMG_DIR, 'obstaculo_oficial2.png')).convert_alpha()
+    assets[METEOR_IMG2] = pygame.image.load(os.path.join(IMG_DIR, 'obstaculo_oficial_2.png')).convert_alpha()
     assets[METEOR_IMG2] = pygame.transform.scale(assets['meteor_img2'], (METEOR_WIDTH2, METEOR_HEIGHT2))
     assets[SHIP_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'playerShip1_orange.png')).convert_alpha()
     assets[SHIP_IMG] = pygame.transform.scale(assets['ship_img'], (SHIP_WIDTH, SHIP_HEIGHT))

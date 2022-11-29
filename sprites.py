@@ -1,7 +1,7 @@
 import random
 import pygame
-from config import WIDTH, HEIGHT, METEOR_WIDTH, METEOR_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT, Gravity 
-from assets import SHIP_IMG, PEW_SOUND, METEOR_IMG, BULLET_IMG, EXPLOSION_ANIM
+from config import WIDTH, HEIGHT, METEOR_WIDTH, METEOR_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT, Gravity, METEOR_HEIGHT2, METEOR_WIDTH2
+from assets import SHIP_IMG, PEW_SOUND, METEOR_IMG, BULLET_IMG, EXPLOSION_ANIM, METEOR_IMG2
 
 class Ship(pygame.sprite.Sprite):
     def __init__(self, groups, assets):
@@ -58,6 +58,7 @@ class Meteor(pygame.sprite.Sprite):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
 
+        #obstaculo 1
         self.image = assets[METEOR_IMG]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
@@ -68,13 +69,6 @@ class Meteor(pygame.sprite.Sprite):
     def update(self):
         # Atualizando a posição do meteoro
         self.rect.x += self.speedx
-
-        #cria novo obstaculo quando passa da metade da tela
-        if self.rect.left < WIDTH/2:
-            self.rect.centerx = WIDTH
-            self.rect.centery = HEIGHT 
-            self.speedx = -4
-
         # cria novo obstaculo quando ele sai da tela
         if self.rect.left < 0:
             self.rect.centerx = WIDTH
