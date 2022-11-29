@@ -1,7 +1,7 @@
 import pygame
 import time
 from config import FPS, WIDTH, HEIGHT, BLACK, YELLOW, RED, Gravity, GREEN 
-from assets import load_assets, DESTROY_SOUND, BOOM_SOUND, BACKGROUND, SCORE_FONT
+from assets import load_assets, BOOM_SOUND, BACKGROUND, SCORE_FONT
 from sprites import Ship, Predio, Explosion, Nuvem, Nuvem2, Predio2, Predio3, Predio4
 
 
