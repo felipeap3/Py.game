@@ -1,6 +1,6 @@
 import pygame
 import time
-from config import FPS, WIDTH, HEIGHT, BLACK, YELLOW, RED, Gravity 
+from config import FPS, WIDTH, HEIGHT, BLACK, YELLOW, RED, Gravity, GREEN, WHITE
 from assets import load_assets, DESTROY_SOUND, BOOM_SOUND, BACKGROUND, SCORE_FONT
 from sprites import Ship, Meteor, Bullet, Explosion, Nuvem, Nuvem2, Predio2, Predio3, Predio4
 
@@ -68,6 +68,7 @@ def game_screen(window):
     keys_down = {}
     score = 0
     lives = 1
+    placar = False
 
     # ===== Loop principal =====
     pygame.mixer.music.play(loops=-1)
@@ -128,7 +129,6 @@ def game_screen(window):
                 m = Meteor(assets)
                 all_sprites.add(m)
                 all_meteors.add(m)
-                score = 0 
 
             hits2 = pygame.sprite.spritecollide(player, all_nuvens, True, pygame.sprite.collide_mask)
             if len(hits2) > 0:
@@ -145,7 +145,6 @@ def game_screen(window):
                 n2 = Nuvem(assets)
                 all_sprites.add(n2)
                 all_nuvens.add(n2)
-                score = 0
 
             hits3 = pygame.sprite.spritecollide(player, all_nuvens2, True, pygame.sprite.collide_mask)
             if len(hits3) > 0:
@@ -161,8 +160,7 @@ def game_screen(window):
                 explosion_duration = explosao.frame_ticks * len(explosao.explosion_anim) + 400
                 n3 = Nuvem2(assets)
                 all_sprites.add(n3)
-                all_nuvens2.add(n3)
-                score = 0 
+                all_nuvens2.add(n3) 
             
             hits4 = pygame.sprite.spritecollide(player, all_predios2, True, pygame.sprite.collide_mask)
             if len(hits4) > 0:
@@ -179,7 +177,6 @@ def game_screen(window):
                 n4 = Predio2(assets)
                 all_sprites.add(n4)
                 all_predios2.add(n4)
-                score = 0 
 
             hits5 = pygame.sprite.spritecollide(player, all_predios3, True, pygame.sprite.collide_mask)
             if len(hits5) > 0:
@@ -196,7 +193,6 @@ def game_screen(window):
                 n5 = Predio3(assets)
                 all_sprites.add(n5)
                 all_predios3.add(n5)
-                score = 0 
 
             hits6 = pygame.sprite.spritecollide(player, all_predios4, True, pygame.sprite.collide_mask)
             if len(hits6) > 0:
@@ -213,15 +209,13 @@ def game_screen(window):
                 n6 = Predio4(assets)
                 all_sprites.add(n6)
                 all_predios3.add(n6)
-                score = 0 
-
-
 
         elif state == EXPLODING:
             now = pygame.time.get_ticks()
             if now - explosion_tick > explosion_duration:
                 if lives <= 0:
                     state = DONE
+                    placar = True
                 else:
                     state = PLAYING
                     player = Ship(groups, assets)
@@ -243,6 +237,15 @@ def game_screen(window):
         text_rect = text_surface.get_rect()
         text_rect.midtop = (WIDTH / 2,  10)
         window.blit(text_surface, text_rect)
+
+        if placar == True:
+            text_surface = assets[SCORE_FONT].render("{:08d}".format(score), True, WHITE)
+            text_rect = text_surface.get_rect()
+            text_rect.midtop = (WIDTH / 2,  HEIGHT/3 + 120)
+            window.blit(text_surface, text_rect)
+            pygame.display.update()
+            time.sleep(3)
+            
 
         # Desenhando as vidas
         text_surface = assets[SCORE_FONT].render(chr(9829) * lives, True, RED)
