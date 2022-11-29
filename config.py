@@ -23,6 +23,9 @@ SHIP_HEIGHT = 50
 
 NUVEM_WIDTH = 160
 NUVEM_HEIGHT = 110
+
+PREDIO2_WIDTH = 110 
+PREDIO2_HEIGHT = 160
 # Define algumas variáveis com as cores básicas
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)

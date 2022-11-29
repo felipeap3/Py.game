@@ -2,7 +2,7 @@ import pygame
 import time
 from config import FPS, WIDTH, HEIGHT, BLACK, YELLOW, RED, Gravity 
 from assets import load_assets, DESTROY_SOUND, BOOM_SOUND, BACKGROUND, SCORE_FONT
-from sprites import Ship, Meteor, Bullet, Explosion, Nuvem, Nuvem2
+from sprites import Ship, Meteor, Bullet, Explosion, Nuvem, Nuvem2, Predio2, Predio3, Predio4
 
 
 def game_screen(window):
@@ -16,13 +16,20 @@ def game_screen(window):
     all_meteors = pygame.sprite.Group()
     all_nuvens = pygame.sprite.Group()
     all_nuvens2 = pygame.sprite.Group()
+    all_predios2 = pygame.sprite.Group()
+    all_predios3 = pygame.sprite.Group()
     all_bullets = pygame.sprite.Group()
+    all_predios4 = pygame.sprite.Group()
     groups = {}
     groups['all_sprites'] = all_sprites
     groups['all_meteors'] = all_meteors
     groups['all_bullets'] = all_bullets
     groups['all_nuvens'] = all_nuvens
     groups['all_nuvens2'] = all_nuvens2
+    groups['all_predios2'] = all_predios2
+    groups['all_predios3'] = all_predios3
+    groups['all_predios4'] = all_predios4
+
 
     # Criando o jogador
     player = Ship(groups, assets)
@@ -40,7 +47,18 @@ def game_screen(window):
         nuvem2 = Nuvem2(assets) 
         all_sprites.add(nuvem2)
         all_nuvens2.add(nuvem2)
-
+    for z in range(8):
+        predio2 = Predio2(assets)
+        all_sprites.add(predio2)
+        all_predios2.add(predio2)
+    for w in range(8):
+        predio3 = Predio3(assets)
+        all_sprites.add(predio3)
+        all_predios3.add(predio3)
+    for y in range(8):
+        predio4 = Predio4(assets)
+        all_sprites.add(predio4)
+        all_predios4.add(predio4)
 
     DONE = 0
     PLAYING = 1
@@ -145,6 +163,57 @@ def game_screen(window):
                 all_sprites.add(n3)
                 all_nuvens2.add(n3)
                 score = 0 
+            
+            hits4 = pygame.sprite.spritecollide(player, all_predios2, True, pygame.sprite.collide_mask)
+            if len(hits4) > 0:
+                # Toca o som da colisão
+                assets[BOOM_SOUND].play()
+                player.kill()
+                lives -= 1
+                explosao = Explosion(player.rect.center, assets)
+                all_sprites.add(explosao)
+                state = EXPLODING
+                keys_down = {}
+                explosion_tick = pygame.time.get_ticks()
+                explosion_duration = explosao.frame_ticks * len(explosao.explosion_anim) + 400
+                n4 = Predio2(assets)
+                all_sprites.add(n4)
+                all_predios2.add(n4)
+                score = 0 
+
+            hits5 = pygame.sprite.spritecollide(player, all_predios3, True, pygame.sprite.collide_mask)
+            if len(hits5) > 0:
+                # Toca o som da colisão
+                assets[BOOM_SOUND].play()
+                player.kill()
+                lives -= 1
+                explosao = Explosion(player.rect.center, assets)
+                all_sprites.add(explosao)
+                state = EXPLODING
+                keys_down = {}
+                explosion_tick = pygame.time.get_ticks()
+                explosion_duration = explosao.frame_ticks * len(explosao.explosion_anim) + 400
+                n5 = Predio3(assets)
+                all_sprites.add(n5)
+                all_predios3.add(n5)
+                score = 0 
+
+            hits6 = pygame.sprite.spritecollide(player, all_predios4, True, pygame.sprite.collide_mask)
+            if len(hits6) > 0:
+                # Toca o som da colisão
+                assets[BOOM_SOUND].play()
+                player.kill()
+                lives -= 1
+                explosao = Explosion(player.rect.center, assets)
+                all_sprites.add(explosao)
+                state = EXPLODING
+                keys_down = {}
+                explosion_tick = pygame.time.get_ticks()
+                explosion_duration = explosao.frame_ticks * len(explosao.explosion_anim) + 400
+                n6 = Predio4(assets)
+                all_sprites.add(n6)
+                all_predios3.add(n6)
+                score = 0 
 
 
 
@@ -165,6 +234,9 @@ def game_screen(window):
         all_sprites.draw(window)
         all_nuvens.draw(window)
         all_nuvens2.draw(window)
+        all_predios2.draw(window)
+        all_predios3.draw(window)
+        all_predios4.draw(window)
 
         # Desenhando o score
         text_surface = assets[SCORE_FONT].render("{:08d}".format(score), True, YELLOW)

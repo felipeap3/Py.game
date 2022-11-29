@@ -1,6 +1,6 @@
 import pygame
 import os
-from config import METEOR_WIDTH, METEOR_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT, IMG_DIR, SND_DIR, FNT_DIR, METEOR_WIDTH2, METEOR_HEIGHT2, NUVEM_WIDTH, NUVEM_HEIGHT
+from config import METEOR_WIDTH, METEOR_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT, IMG_DIR, SND_DIR, FNT_DIR, METEOR_WIDTH2, METEOR_HEIGHT2, NUVEM_WIDTH, NUVEM_HEIGHT, PREDIO2_WIDTH, PREDIO2_HEIGHT
 
 
 BACKGROUND = 'background'
@@ -17,9 +17,18 @@ DESTROY_SOUND = 'destroy_sound'
 PEW_SOUND = 'pew_sound'
 NUVEM = 'nuvem'
 NUVEM2 = 'nuvem2'
+PREDIO2 = 'predio2'
+PREDIO3 = 'predio3'
+PREDIO4 = 'predio4'
 
 def load_assets():
     assets = {}
+    assets[PREDIO4] = pygame.image.load(os.path.join(IMG_DIR, 'obstaculo_oficial_2.png')).convert_alpha()
+    assets[PREDIO4] = pygame.transform.scale(assets['predio4'], (PREDIO2_WIDTH, PREDIO2_HEIGHT))
+    assets[PREDIO3] = pygame.image.load(os.path.join(IMG_DIR, 'obstaculo_oficial.png')).convert_alpha()
+    assets[PREDIO3] = pygame.transform.scale(assets['predio3'], (METEOR_WIDTH, METEOR_HEIGHT))
+    assets[PREDIO2] = pygame.image.load(os.path.join(IMG_DIR, 'obstaculo_oficial.png')).convert_alpha()
+    assets[PREDIO2] = pygame.transform.scale(assets['predio2'], (PREDIO2_WIDTH, PREDIO2_HEIGHT))
     assets[NUVEM] = pygame.image.load(os.path.join(IMG_DIR, 'nuvem.png')).convert_alpha()
     assets[NUVEM] = pygame.transform.scale(assets['nuvem'], (NUVEM_WIDTH, NUVEM_HEIGHT))
     assets[NUVEM2] = pygame.image.load(os.path.join(IMG_DIR, 'nuvem2.png')).convert_alpha()
