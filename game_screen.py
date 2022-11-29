@@ -1,8 +1,8 @@
 import pygame
 import time
 from config import FPS, WIDTH, HEIGHT, BLACK, YELLOW, RED, Gravity, GREEN 
-from assets import load_assets, DESTROY_SOUND, BOOM_SOUND, BACKGROUND, SCORE_FONT
-from sprites import Ship, Predio, Bullet, Explosion, Nuvem, Nuvem2, Predio2, Predio3, Predio4
+from assets import load_assets, BOOM_SOUND, BACKGROUND, SCORE_FONT
+from sprites import Ship, Predio, Explosion, Nuvem, Nuvem2, Predio2, Predio3, Predio4
 
 
 def game_screen(window):
@@ -18,12 +18,10 @@ def game_screen(window):
     all_nuvens2 = pygame.sprite.Group()
     all_predios2 = pygame.sprite.Group()
     all_predios3 = pygame.sprite.Group()
-    all_bullets = pygame.sprite.Group()
     all_predios4 = pygame.sprite.Group()
     groups = {}
     groups['all_sprites'] = all_sprites
     groups['all_predios'] = all_predios
-    groups['all_bullets'] = all_bullets
     groups['all_nuvens'] = all_nuvens
     groups['all_nuvens2'] = all_nuvens2
     groups['all_predios2'] = all_predios2
@@ -60,12 +58,15 @@ def game_screen(window):
         all_sprites.add(predio4)
         all_predios4.add(predio4)
 
+    #estados do jogo
     DONE = 0
     PLAYING = 1
     EXPLODING = 2
     state = PLAYING
 
+
     keys_down = {}
+    #variaveis que serao utilizadas
     score = 0
     lives = 1
     placar = False
@@ -83,7 +84,7 @@ def game_screen(window):
             if state == PLAYING:
                 # Verifica se apertou alguma tecla.
                 if event.type == pygame.KEYDOWN:
-                    # Dependendo da tecla, altera a velocidade.
+                    # Se aperta espaço muda a velocidade
                     keys_down[event.key] = True
                     if event.key == pygame.K_SPACE: 
                         player.speedy -= 12
@@ -94,24 +95,6 @@ def game_screen(window):
         if state == PLAYING:
             
             score += 1
-
-            # Verifica se houve colisão entre tiro e meteoro
-            hits = pygame.sprite.groupcollide(all_predios, all_bullets, True, True, pygame.sprite.collide_mask)
-            for meteor in hits: # As chaves são os elementos do primeiro grupo (meteoros) que colidiram com alguma bala
-                # O meteoro e destruido e precisa ser recriado
-                assets[DESTROY_SOUND].play()
-                m = Predio(assets)
-                all_sprites.add(m)
-                all_predios.add(m)
-
-                # No lugar do meteoro antigo, adicionar uma explosão.
-                explosao = Explosion(predio.rect.center, assets)
-                all_sprites.add(explosao)
-
-                # Ganhou pontos!
-                score += 100
-                if score % 1000 == 0:
-                    lives += 1
 
             # Verifica se houve colisão entre nave e obstaculos
             hits = pygame.sprite.spritecollide(player, all_predios, True, pygame.sprite.collide_mask)
@@ -126,6 +109,7 @@ def game_screen(window):
                 keys_down = {}
                 explosion_tick = pygame.time.get_ticks()
                 explosion_duration = explosao.frame_ticks * len(explosao.explosion_anim) + 400
+                #readiciona os sprites
                 m = Predio(assets)
                 all_sprites.add(m)
                 all_predios.add(m)
@@ -142,6 +126,7 @@ def game_screen(window):
                 keys_down = {}
                 explosion_tick = pygame.time.get_ticks()
                 explosion_duration = explosao.frame_ticks * len(explosao.explosion_anim) + 400
+                #readiciona os sprites
                 n2 = Nuvem(assets)
                 all_sprites.add(n2)
                 all_nuvens.add(n2)
@@ -158,6 +143,7 @@ def game_screen(window):
                 keys_down = {}
                 explosion_tick = pygame.time.get_ticks()
                 explosion_duration = explosao.frame_ticks * len(explosao.explosion_anim) + 400
+                #readiciona os sprites
                 n3 = Nuvem2(assets)
                 all_sprites.add(n3)
                 all_nuvens2.add(n3) 
@@ -174,6 +160,7 @@ def game_screen(window):
                 keys_down = {}
                 explosion_tick = pygame.time.get_ticks()
                 explosion_duration = explosao.frame_ticks * len(explosao.explosion_anim) + 400
+                #readiciona os sprites
                 n4 = Predio2(assets)
                 all_sprites.add(n4)
                 all_predios2.add(n4)
@@ -190,6 +177,7 @@ def game_screen(window):
                 keys_down = {}
                 explosion_tick = pygame.time.get_ticks()
                 explosion_duration = explosao.frame_ticks * len(explosao.explosion_anim) + 400
+                #readiciona os sprites
                 n5 = Predio3(assets)
                 all_sprites.add(n5)
                 all_predios3.add(n5)
@@ -206,10 +194,12 @@ def game_screen(window):
                 keys_down = {}
                 explosion_tick = pygame.time.get_ticks()
                 explosion_duration = explosao.frame_ticks * len(explosao.explosion_anim) + 400
+                #readiciona os sprites
                 n6 = Predio4(assets)
                 all_sprites.add(n6)
                 all_predios3.add(n6)
 
+        #encerra o jogo
         elif state == EXPLODING:
             now = pygame.time.get_ticks()
             if now - explosion_tick > explosion_duration:
@@ -222,9 +212,9 @@ def game_screen(window):
                     all_sprites.add(player)
 
         # ----- Gera saídas
-        window.fill(BLACK)  # Preenche com a cor branca
+        window.fill(BLACK)  # Preenche com a cor preta
         window.blit(assets[BACKGROUND], (0, 0))
-        # Desenhando meteoros
+        # Desenhando os sprites
         all_sprites.draw(window)
         all_nuvens.draw(window)
         all_nuvens2.draw(window)
@@ -238,6 +228,7 @@ def game_screen(window):
         text_rect.midtop = (WIDTH / 2,  10)
         window.blit(text_surface, text_rect)
 
+        #desenhando o score ao final do jogo
         if placar == True:
             text_surface = assets[SCORE_FONT].render("{:08d}".format(score), True, RED)
             text_rect = text_surface.get_rect()
