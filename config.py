@@ -37,3 +37,4 @@ GAME = 1
 QUIT = 2
 
 Gravity = 0.5
+JOGA = True

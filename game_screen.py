@@ -1,4 +1,5 @@
 import pygame
+import time
 from config import FPS, WIDTH, HEIGHT, BLACK, YELLOW, RED, Gravity 
 from assets import load_assets, DESTROY_SOUND, BOOM_SOUND, BACKGROUND, SCORE_FONT
 from sprites import Ship, Meteor, Bullet, Explosion, Nuvem, Nuvem2
@@ -40,6 +41,7 @@ def game_screen(window):
         all_sprites.add(nuvem2)
         all_nuvens2.add(nuvem2)
 
+
     DONE = 0
     PLAYING = 1
     EXPLODING = 2
@@ -69,7 +71,7 @@ def game_screen(window):
         
         # ----- Atualiza estado do jogo
         # Atualizando a posição dos meteoros
-        all_sprites.update()
+        all_sprites.update()   
         if state == PLAYING:
             # Verifica se houve colisão entre tiro e meteoro
             hits = pygame.sprite.groupcollide(all_meteors, all_bullets, True, True, pygame.sprite.collide_mask)

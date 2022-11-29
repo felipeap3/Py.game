@@ -1,6 +1,7 @@
 import random
 import pygame
-from config import WIDTH, HEIGHT, METEOR_WIDTH, METEOR_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT, Gravity, METEOR_HEIGHT2, METEOR_WIDTH2, NUVEM_WIDTH, NUVEM_HEIGHT
+import time
+from config import WIDTH, HEIGHT, METEOR_WIDTH, METEOR_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT, Gravity, METEOR_HEIGHT2, METEOR_WIDTH2, NUVEM_WIDTH, NUVEM_HEIGHT, JOGA
 from assets import SHIP_IMG, PEW_SOUND, METEOR_IMG, BULLET_IMG, EXPLOSION_ANIM, METEOR_IMG2, NUVEM, NUVEM2
 
 class Ship(pygame.sprite.Sprite):
@@ -57,15 +58,15 @@ class Meteor(pygame.sprite.Sprite):
     def __init__(self, assets):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
-
-        #obstaculo 1
+        # while JOGA == True:
+        #     time.sleep(2.5)
         self.image = assets[METEOR_IMG]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         self.rect.centerx = WIDTH
         self.rect.centery = HEIGHT 
         self.speedx = -4
-
+       
     def update(self):
         # Atualizando a posição do meteoro
         self.rect.x += self.speedx
@@ -152,7 +153,7 @@ class Nuvem(pygame.sprite.Sprite):
     def __init__(self, assets):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
-
+        
         self.image = assets[NUVEM]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
@@ -173,13 +174,13 @@ class Nuvem2(pygame.sprite.Sprite):
     def __init__(self, assets):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
-
+        
         self.image = assets[NUVEM2]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         self.rect.centerx = WIDTH
         self.rect.centery = random.randint(0, HEIGHT/2)
-        self.speedx = -9
+        self.speedx = -6
 
     def update(self):
         # Atualizando a posição da nuvem 
@@ -188,5 +189,5 @@ class Nuvem2(pygame.sprite.Sprite):
         if self.rect.left < 0:
             self.rect.centerx = WIDTH
             self.rect.centery = random.randint(0, HEIGHT/2) 
-            self.speedx = -9
+            self.speedx = -6
             
