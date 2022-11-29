@@ -16,11 +16,14 @@ BOOM_SOUND = 'boom_sound'
 DESTROY_SOUND = 'destroy_sound'
 PEW_SOUND = 'pew_sound'
 NUVEM = 'nuvem'
+NUVEM2 = 'nuvem2'
 
 def load_assets():
     assets = {}
     assets[NUVEM] = pygame.image.load(os.path.join(IMG_DIR, 'nuvem.png')).convert_alpha()
     assets[NUVEM] = pygame.transform.scale(assets['nuvem'], (NUVEM_WIDTH, NUVEM_HEIGHT))
+    assets[NUVEM2] = pygame.image.load(os.path.join(IMG_DIR, 'nuvem2.png')).convert_alpha()
+    assets[NUVEM2] = pygame.transform.scale(assets['nuvem2'], (NUVEM_WIDTH, NUVEM_HEIGHT))
     assets[BACKGROUND] = pygame.image.load(os.path.join(IMG_DIR, 'starfield.png')).convert()
     assets[METEOR_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'obstaculo_oficial.png')).convert_alpha()
     assets[METEOR_IMG] = pygame.transform.scale(assets['meteor_img'], (METEOR_WIDTH, METEOR_HEIGHT))

@@ -1,7 +1,7 @@
 import random
 import pygame
 from config import WIDTH, HEIGHT, METEOR_WIDTH, METEOR_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT, Gravity, METEOR_HEIGHT2, METEOR_WIDTH2, NUVEM_WIDTH, NUVEM_HEIGHT
-from assets import SHIP_IMG, PEW_SOUND, METEOR_IMG, BULLET_IMG, EXPLOSION_ANIM, METEOR_IMG2, NUVEM
+from assets import SHIP_IMG, PEW_SOUND, METEOR_IMG, BULLET_IMG, EXPLOSION_ANIM, METEOR_IMG2, NUVEM, NUVEM2
 
 class Ship(pygame.sprite.Sprite):
     def __init__(self, groups, assets):
@@ -166,6 +166,27 @@ class Nuvem(pygame.sprite.Sprite):
         # recoloca a nuvem que saiu no inicio da tela 
         if self.rect.left < 0:
             self.rect.centerx = WIDTH 
+            self.rect.centery = random.randint(0, HEIGHT/2) 
+            self.speedx = -6
+
+class Nuvem2(pygame.sprite.Sprite):
+    def __init__(self, assets):
+        # Construtor da classe mãe (Sprite).
+        pygame.sprite.Sprite.__init__(self)
+
+        self.image = assets[NUVEM2]
+        self.mask = pygame.mask.from_surface(self.image)
+        self.rect = self.image.get_rect()
+        self.rect.centerx = WIDTH
+        self.rect.centery = random.randint(0, HEIGHT/2)
+        self.speedx = -6
+
+    def update(self):
+        # Atualizando a posição da nuvem 
+        self.rect.x += self.speedx
+        # recoloca a nuvem que saiu no inicio da tela 
+        if Nuvem(self.image) == WIDTH / 2:
+            self.rect.centerx = WIDTH
             self.rect.centery = random.randint(0, HEIGHT/2) 
             self.speedx = -6
             
