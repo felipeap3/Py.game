@@ -22,7 +22,7 @@ SHIP_WIDTH = 80
 SHIP_HEIGHT = 50
 
 NUVEM_WIDTH = 80
-NUVEM_HEIGHT = 50
+NUVEM_HEIGHT = 90
 # Define algumas variáveis com as cores básicas
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
