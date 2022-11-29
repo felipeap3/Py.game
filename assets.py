@@ -1,6 +1,6 @@
 import pygame
 import os
-from config import METEOR_WIDTH, METEOR_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT, IMG_DIR, SND_DIR, FNT_DIR, METEOR_WIDTH2, METEOR_HEIGHT2
+from config import METEOR_WIDTH, METEOR_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT, IMG_DIR, SND_DIR, FNT_DIR, METEOR_WIDTH2, METEOR_HEIGHT2, NUVEM_WIDTH, NUVEM_HEIGHT
 
 
 BACKGROUND = 'background'
@@ -15,10 +15,12 @@ SCORE_FONT = 'score_font'
 BOOM_SOUND = 'boom_sound'
 DESTROY_SOUND = 'destroy_sound'
 PEW_SOUND = 'pew_sound'
-
+NUVEM = 'nuvem'
 
 def load_assets():
     assets = {}
+    assets[NUVEM] = pygame.image.load(os.path.join(IMG_DIR, 'nuvem.png')).convert_alpha()
+    assets[NUVEM] = pygame.transform.scale(assets['nuvem'], (NUVEM_WIDTH, NUVEM_HEIGHT))
     assets[BACKGROUND] = pygame.image.load(os.path.join(IMG_DIR, 'starfield.png')).convert()
     assets[METEOR_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'obstaculo_oficial.png')).convert_alpha()
     assets[METEOR_IMG] = pygame.transform.scale(assets['meteor_img'], (METEOR_WIDTH, METEOR_HEIGHT))

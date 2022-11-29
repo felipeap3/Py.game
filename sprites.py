@@ -1,7 +1,7 @@
 import random
 import pygame
-from config import WIDTH, HEIGHT, METEOR_WIDTH, METEOR_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT, Gravity, METEOR_HEIGHT2, METEOR_WIDTH2
-from assets import SHIP_IMG, PEW_SOUND, METEOR_IMG, BULLET_IMG, EXPLOSION_ANIM, METEOR_IMG2
+from config import WIDTH, HEIGHT, METEOR_WIDTH, METEOR_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT, Gravity, METEOR_HEIGHT2, METEOR_WIDTH2, NUVEM_WIDTH, NUVEM_HEIGHT
+from assets import SHIP_IMG, PEW_SOUND, METEOR_IMG, BULLET_IMG, EXPLOSION_ANIM, METEOR_IMG2, NUVEM
 
 class Ship(pygame.sprite.Sprite):
     def __init__(self, groups, assets):
@@ -153,19 +153,19 @@ class Nuvem(pygame.sprite.Sprite):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = assets[NUVEM_IMG]
+        self.image = assets[NUVEM]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
-        self.rect.x = random.randint(0, WIDTH-METEOR_WIDTH)
-        self.rect.y = random.randint(-100, -METEOR_HEIGHT)
-        self.speedx = random.randint(-3, 3)
-        self.speedy = random.randint(2, 9)
+        self.rect.centerx = WIDTH
+        self.rect.centery = random.randint(0, HEIGHT/2)
+        self.speedx = -6
 
     def update(self):
-        # Atualizando a posição do meteoro
+        # Atualizando a posição da nuvem 
         self.rect.x += self.speedx
-        # Se o meteoro passar do final da tela, volta para cima e sorteia
-        # novas posições e velocidades
-        if self.rect.top > HEIGHT or self.rect.right < 0 or self.rect.left > WIDTH:
-            self.rect.x = random.randint(0, WIDTH-METEOR_WIDTH)
-            self.speedx = random.randint(-3, 3)
+        # recoloca a nuvem que saiu no inicio da tela 
+        if self.rect.left < 0:
+            self.rect.centerx = WIDTH 
+            self.rect.centery = random.randint(0, HEIGHT/2) 
+            self.speedx = -6
+            
