@@ -67,7 +67,7 @@ def game_screen(window):
 
     keys_down = {}
     score = 0
-    lives = 3
+    lives = 1
 
     # ===== Loop principal =====
     pygame.mixer.music.play(loops=-1)

@@ -198,7 +198,7 @@ class Predio2(pygame.sprite.Sprite):
         self.image = assets[PREDIO2]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
-        self.rect.centerx = WIDTH + WIDTH/1.5 + 20 
+        self.rect.centerx = WIDTH + WIDTH/1.3  
         self.rect.centery = HEIGHT 
         self.speedx = -4
        
