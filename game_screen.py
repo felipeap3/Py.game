@@ -73,6 +73,9 @@ def game_screen(window):
         # Atualizando a posição dos meteoros
         all_sprites.update()   
         if state == PLAYING:
+            
+            score += 1
+
             # Verifica se houve colisão entre tiro e meteoro
             hits = pygame.sprite.groupcollide(all_meteors, all_bullets, True, True, pygame.sprite.collide_mask)
             for meteor in hits: # As chaves são os elementos do primeiro grupo (meteoros) que colidiram com alguma bala
@@ -107,6 +110,7 @@ def game_screen(window):
                 m = Meteor(assets)
                 all_sprites.add(m)
                 all_meteors.add(m)
+                score = 0 
 
             hits2 = pygame.sprite.spritecollide(player, all_nuvens, True, pygame.sprite.collide_mask)
             if len(hits2) > 0:
@@ -123,6 +127,7 @@ def game_screen(window):
                 n2 = Nuvem(assets)
                 all_sprites.add(n2)
                 all_nuvens.add(n2)
+                score = 0
 
             hits3 = pygame.sprite.spritecollide(player, all_nuvens2, True, pygame.sprite.collide_mask)
             if len(hits3) > 0:
@@ -139,6 +144,7 @@ def game_screen(window):
                 n3 = Nuvem2(assets)
                 all_sprites.add(n3)
                 all_nuvens2.add(n3)
+                score = 0 
 
 
 
