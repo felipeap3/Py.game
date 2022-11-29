@@ -58,8 +58,7 @@ class Meteor(pygame.sprite.Sprite):
     def __init__(self, assets):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
-        # while JOGA == True:
-        #     time.sleep(2.5)
+        
         self.image = assets[METEOR_IMG]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
