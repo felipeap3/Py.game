@@ -220,7 +220,7 @@ def game_screen(window):
         elif state == EXPLODING:
             now = pygame.time.get_ticks()
             if now - explosion_tick > explosion_duration:
-                if lives == 0:
+                if lives <= 0:
                     state = DONE
                 else:
                     state = PLAYING
