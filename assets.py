@@ -7,7 +7,6 @@ BACKGROUND = 'background'
 PREDIO_IMG = 'predio_img'
 PREDIO_IMG2 = 'predio_img2'
 SHIP_IMG = 'ship_img'
-BULLET_IMG = 'bullet_img'
 EXPLOSION_ANIM = 'explosion_anim'
 SCORE_FONT = 'score_font'
 BOOM_SOUND = 'boom_sound'
@@ -17,6 +16,7 @@ PREDIO2 = 'predio2'
 PREDIO3 = 'predio3'
 PREDIO4 = 'predio4'
 
+#dicionarrio de assets
 def load_assets():
     assets = {}
     assets[PREDIO4] = pygame.image.load(os.path.join(IMG_DIR, 'obstaculo_oficial_2.png')).convert_alpha()
