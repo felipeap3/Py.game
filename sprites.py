@@ -67,7 +67,7 @@ class Meteor(pygame.sprite.Sprite):
         self.speedx = -4
        
     def update(self):
-        # Atualizando a posição do meteoro
+        # Atualizando a posição do obstaculo
         self.rect.x += self.speedx
         # cria novo obstaculo quando ele sai da tela
         if self.rect.left < 0:
