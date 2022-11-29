@@ -1,6 +1,6 @@
 import pygame
 import time
-from config import FPS, WIDTH, HEIGHT, BLACK, YELLOW, RED, Gravity, GREEN, WHITE
+from config import FPS, WIDTH, HEIGHT, BLACK, YELLOW, RED, Gravity, GREEN 
 from assets import load_assets, DESTROY_SOUND, BOOM_SOUND, BACKGROUND, SCORE_FONT
 from sprites import Ship, Meteor, Bullet, Explosion, Nuvem, Nuvem2, Predio2, Predio3, Predio4
 
@@ -239,7 +239,7 @@ def game_screen(window):
         window.blit(text_surface, text_rect)
 
         if placar == True:
-            text_surface = assets[SCORE_FONT].render("{:08d}".format(score), True, WHITE)
+            text_surface = assets[SCORE_FONT].render("{:08d}".format(score), True, RED)
             text_rect = text_surface.get_rect()
             text_rect.midtop = (WIDTH / 2,  HEIGHT/3 + 120)
             window.blit(text_surface, text_rect)
