@@ -1,12 +1,11 @@
 import pygame
 import os
-from config import METEOR_WIDTH, METEOR_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT, IMG_DIR, SND_DIR, FNT_DIR, METEOR_WIDTH2, METEOR_HEIGHT2, NUVEM_WIDTH, NUVEM_HEIGHT, PREDIO2_WIDTH, PREDIO2_HEIGHT
+from config import PREDIO_WIDTH, PREDIO_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT, IMG_DIR, SND_DIR, FNT_DIR, PREDIO_WIDTH1, PREDIO_HEIGHT1, NUVEM_WIDTH, NUVEM_HEIGHT, PREDIO2_WIDTH, PREDIO2_HEIGHT
 
 
 BACKGROUND = 'background'
-METEOR_IMG = 'meteor_img'
-METEOR_IMG2 = 'meteor_img2'
-METEOR_IMG = 'meteor_img'
+PREDIO_IMG = 'predio_img'
+PREDIO_IMG2 = 'predio_img2'
 SHIP_IMG = 'ship_img'
 SHIP_IMG = 'ship_img'
 BULLET_IMG = 'bullet_img'
@@ -26,7 +25,7 @@ def load_assets():
     assets[PREDIO4] = pygame.image.load(os.path.join(IMG_DIR, 'obstaculo_oficial_2.png')).convert_alpha()
     assets[PREDIO4] = pygame.transform.scale(assets['predio4'], (PREDIO2_WIDTH, PREDIO2_HEIGHT))
     assets[PREDIO3] = pygame.image.load(os.path.join(IMG_DIR, 'obstaculo_oficial.png')).convert_alpha()
-    assets[PREDIO3] = pygame.transform.scale(assets['predio3'], (METEOR_WIDTH, METEOR_HEIGHT))
+    assets[PREDIO3] = pygame.transform.scale(assets['predio3'], (PREDIO_WIDTH, PREDIO_HEIGHT))
     assets[PREDIO2] = pygame.image.load(os.path.join(IMG_DIR, 'obstaculo_oficial.png')).convert_alpha()
     assets[PREDIO2] = pygame.transform.scale(assets['predio2'], (PREDIO2_WIDTH, PREDIO2_HEIGHT))
     assets[NUVEM] = pygame.image.load(os.path.join(IMG_DIR, 'nuvem.png')).convert_alpha()
@@ -34,10 +33,10 @@ def load_assets():
     assets[NUVEM2] = pygame.image.load(os.path.join(IMG_DIR, 'nuvem2.png')).convert_alpha()
     assets[NUVEM2] = pygame.transform.scale(assets['nuvem2'], (NUVEM_WIDTH, NUVEM_HEIGHT))
     assets[BACKGROUND] = pygame.image.load(os.path.join(IMG_DIR, 'city_background.png')).convert()
-    assets[METEOR_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'obstaculo_oficial.png')).convert_alpha()
-    assets[METEOR_IMG] = pygame.transform.scale(assets['meteor_img'], (METEOR_WIDTH, METEOR_HEIGHT))
-    assets[METEOR_IMG2] = pygame.image.load(os.path.join(IMG_DIR, 'obstaculo_oficial_2.png')).convert_alpha()
-    assets[METEOR_IMG2] = pygame.transform.scale(assets['meteor_img2'], (METEOR_WIDTH2, METEOR_HEIGHT2))
+    assets[PREDIO_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'obstaculo_oficial.png')).convert_alpha()
+    assets[PREDIO_IMG] = pygame.transform.scale(assets['predio_img'], (PREDIO_WIDTH, PREDIO_HEIGHT))
+    assets[PREDIO_IMG2] = pygame.image.load(os.path.join(IMG_DIR, 'obstaculo_oficial_2.png')).convert_alpha()
+    assets[PREDIO_IMG2] = pygame.transform.scale(assets['predio_img2'], (PREDIO_WIDTH1, PREDIO_HEIGHT1))
     assets[SHIP_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'playerShip1_orange.png')).convert_alpha()
     assets[SHIP_IMG] = pygame.transform.scale(assets['ship_img'], (SHIP_WIDTH, SHIP_HEIGHT))
     assets[BULLET_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'laserRed16.png')).convert_alpha()

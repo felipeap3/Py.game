@@ -1,8 +1,8 @@
 import random
 import pygame
 import time
-from config import WIDTH, HEIGHT, METEOR_WIDTH, METEOR_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT, Gravity, METEOR_HEIGHT2, METEOR_WIDTH2, NUVEM_WIDTH, NUVEM_HEIGHT, JOGA, PREDIO2_HEIGHT, PREDIO2_WIDTH
-from assets import SHIP_IMG, PEW_SOUND, METEOR_IMG, BULLET_IMG, EXPLOSION_ANIM, METEOR_IMG2, NUVEM, NUVEM2, PREDIO2, PREDIO3, PREDIO4
+from config import WIDTH, HEIGHT, PREDIO_WIDTH, PREDIO_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT, Gravity, PREDIO_HEIGHT1, PREDIO_WIDTH1, NUVEM_WIDTH, NUVEM_HEIGHT, JOGA, PREDIO2_HEIGHT, PREDIO2_WIDTH
+from assets import SHIP_IMG, PEW_SOUND, PREDIO_IMG, BULLET_IMG, EXPLOSION_ANIM, PREDIO_IMG2, NUVEM, NUVEM2, PREDIO2, PREDIO3, PREDIO4
 
 class Ship(pygame.sprite.Sprite):
     def __init__(self, groups, assets):
@@ -54,12 +54,12 @@ class Ship(pygame.sprite.Sprite):
             self.groups['all_bullets'].add(new_bullet)
             self.assets[PEW_SOUND].play()
 
-class Meteor(pygame.sprite.Sprite):
+class Predio(pygame.sprite.Sprite):
     def __init__(self, assets):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
         
-        self.image = assets[METEOR_IMG]
+        self.image = assets[PREDIO_IMG]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         self.rect.centerx = WIDTH
