@@ -2,7 +2,7 @@ import pygame
 import time
 from config import FPS, WIDTH, HEIGHT, BLACK, YELLOW, RED, Gravity, GREEN 
 from assets import load_assets, DESTROY_SOUND, BOOM_SOUND, BACKGROUND, SCORE_FONT
-from sprites import Ship, Predio, Bullet, Explosion, Nuvem, Nuvem2, Predio2, Predio3, Predio4
+from sprites import Ship, Predio, Explosion, Nuvem, Nuvem2, Predio2, Predio3, Predio4
 
 
 def game_screen(window):
@@ -18,12 +18,10 @@ def game_screen(window):
     all_nuvens2 = pygame.sprite.Group()
     all_predios2 = pygame.sprite.Group()
     all_predios3 = pygame.sprite.Group()
-    all_bullets = pygame.sprite.Group()
     all_predios4 = pygame.sprite.Group()
     groups = {}
     groups['all_sprites'] = all_sprites
     groups['all_predios'] = all_predios
-    groups['all_bullets'] = all_bullets
     groups['all_nuvens'] = all_nuvens
     groups['all_nuvens2'] = all_nuvens2
     groups['all_predios2'] = all_predios2
